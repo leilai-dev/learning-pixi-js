@@ -77,6 +77,17 @@ function setup() {
 }
 ```
 
+### Javascript Image 객체로부터 스프라이트 생성시
+```
+let base = new PIXI.BaseTexture(anyImageObject),
+    texture = new PIXI.Texture(base),
+    sprite = new PIXI.Sprite(texture);
+```
+Canvas 엘리먼트에서도 받아올 수 있음
+```
+let base = new PIXI.BaseTexture.fromCanvas(anyCanvasElement),
+```
+
 ## 5. Aliases
 ```
 //Aliases
@@ -88,3 +99,56 @@ let Application = PIXI.Application,
 코드 가독성 향상을 위해.
 
 ## 6. Loading Progress
+### PIXI.loader.add() 이미지 리소스 이름 지정 가능
+```
+PIXI.loader
+  .add("catImage", "images/cat.png")
+  .load(setup);
+
+let cat = new PIXI.Sprite(PIXI.loader.resources.catImage.texture);
+```
+그러나 웬만하면 쓰지 않는 것을 추천하고 있음
+
+### Monitoring load progress
+로더 객체에서 onProgress 이벤트를 받아서 구현 가능
+> http://pixijs.download/release/docs/PIXI.Loader.html#onProgress
+```
+PIXI.loader
+  .add([
+    "images/one.png",
+    "images/two.png",
+    "images/three.png"
+  ])
+  .on("progress", loadProgressHandler)
+  .load(setup);
+
+function loadProgressHandler() {
+  console.log("loading"); 
+}
+
+function setup() {
+  console.log("setup");
+}
+```
+콘솔 출력 결과는
+```
+loading
+loading
+loading
+setup
+```
+
+이벤트 핸들러에서 파라미터 추가하여 로딩 진행현황 표시하기 
+```
+function loadProgressHandler(loader, resource) { 
+  console.log("loading: " + resource.url); 
+
+  console.log("progress: " + loader.progress + "%"); 
+
+  // add()에서 리소스 name 프로퍼티 설정한 경우
+  //console.log("loading: " + resource.name);
+}
+```
+
+그 외 추가 정보
+> https://github.com/kittykatattack/learningPixi#more-about-pixis-loader
