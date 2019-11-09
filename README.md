@@ -152,3 +152,40 @@ function loadProgressHandler(loader, resource) {
 
 그 외 추가 정보
 > https://github.com/kittykatattack/learningPixi#more-about-pixis-loader
+
+
+## 7. Position And Rotation
+좌상단 (0, 0) 기준,
+```
+function setup() {
+
+  //Create the `cat` sprite
+  let cat = new Sprite(resources["images/cat.png"].texture);
+
+  //Change the sprite's position
+  cat.x = 96;
+  cat.y = 96;
+  // cat.position.set(120, 120);
+
+  //Change the sprite's size
+  cat.width = 80;
+  cat.height = 120;
+  // cat.scale.set(1.5, 3);
+
+  //Add the cat to the stage so you can see it
+  app.stage.addChild(cat);
+}
+```
+
+### Rotation 참고사항
+anchor와 pivot 둘 중 아무거나
+- anchor shifts the origin point of the sprite's image texture, using a 0 to 1 normalized value.
+- pivot shifts the origin of the sprite's x and y point, using pixel values.
+```
+cat.anchor.x = 0.5;
+cat.anchor.y = 0.5;
+// cat.anchor.set(0.5, 0.5);
+// cat.pivot.set(32, 32); // image size: 64x64일 경우 둘 다 이미지 중앙 기준
+```
+> https://github.com/kittykatattack/learningPixi#rotation
+
