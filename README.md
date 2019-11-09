@@ -76,3 +76,15 @@ function setup() {
   app.stage.addChild(sprite);
 }
 ```
+
+## 5. Aliases
+```
+//Aliases
+let Application = PIXI.Application,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    Sprite = PIXI.Sprite;
+```
+코드 가독성 향상을 위해.
+
+## 6. Loading Progress
