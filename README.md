@@ -56,4 +56,23 @@ app.stage
 
 ## 4. Sprite From Image
 > http://pixijs.download/release/docs/PIXI.utils.html#.TextureCache
-> 
+
+이미지 리소스(Texture, ...) 캐싱 > Sprite 생성 > 화면에 그리기
+
+PIXI.loader 객체에서 아마 캐싱하는듯?
+
+### 추천 방법
+> https://www.html5gamedevs.com/topic/16019-preload-all-textures/?tab=comments#comment-90907 참고
+```
+PIXI.loader
+  .add("images/anyImage.png") // .add(["images.png", ..."]) 배열 형태 가능
+  .load(setup);
+
+function setup() {
+  let sprite = new PIXI.Sprite(
+    PIXI.loader.resources["images/anyImage.png"].texture
+  );
+
+  app.stage.addChild(sprite);
+}
+```
