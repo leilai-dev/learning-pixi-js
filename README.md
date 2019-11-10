@@ -257,3 +257,24 @@ app.stage.addChild(sprite);
 
 그리드 형식으로 표현될 경우 기준 타일 사이즈를 상수로 선언해 놓는것도 괜찮을 듯
 
+
+## 10. MovingSprites
+PIXI.Application.ticker 에서 gameLoop(delta) 콜백 활용
+> http://pixijs.download/release/docs/PIXI.Application.html#ticker
+
+You don't have to use Pixi's ticker to create a game loop. If you prefer, just use requestAnimationFrame, like this:
+```
+function gameLoop() {
+
+  //Call this `gameLoop` function on the next screen refresh
+  //(which happens 60 times per second)
+  requestAnimationFrame(gameLoop);
+
+  //Move the cat
+  cat.x += 1;
+}
+
+//Start the loop
+gameLoop();
+```
+
