@@ -26,6 +26,7 @@ PIXI.utils.isWebGLSupported() 실행이 안된다?
 
 콘솔창에서 PixiJS 이니셜라이징 로그를 확인하기
 
+
 ## 2. Creating the Pixi Application and stage
 > http://pixijs.download/release/docs/PIXI.Application.html
 ```
@@ -40,6 +41,8 @@ let app = new PIXI.Application({
   // ...
 });
 ```
+
+
 ## 3. Pixi sprites
 > http://pixijs.download/release/docs/PIXI.Application.html#stage
 > http://pixijs.download/release/docs/PIXI.Container.html
@@ -53,6 +56,7 @@ app.stage
 - Single image file
 - sub-iamge on a tileset
 - texture atlas (JSON file)
+
 
 ## 4. Sprite From Image
 > http://pixijs.download/release/docs/PIXI.utils.html#.TextureCache
@@ -97,6 +101,7 @@ let Application = PIXI.Application,
     Sprite = PIXI.Sprite;
 ```
 코드 가독성 향상을 위해.
+
 
 ## 6. Loading Progress
 ### PIXI.loader.add() 이미지 리소스 이름 지정 가능
@@ -178,9 +183,9 @@ function setup() {
 ```
 
 ### Rotation 참고사항
-anchor와 pivot 둘 중 아무거나
-- anchor shifts the origin point of the sprite's image texture, using a 0 to 1 normalized value.
-- pivot shifts the origin of the sprite's x and y point, using pixel values.
+anchor와 pivot 둘 중 아무거나, 0~1 정규화인지, 픽셀 기준 이동인지 차이
+- anchor shifts the origin point of the sprite's image texture, using a 0 to 1 **normalized** value.
+- pivot shifts the origin of the sprite's x and y point, using **pixel** values.
 ```
 cat.anchor.x = 0.5;
 cat.anchor.y = 0.5;
@@ -188,4 +193,23 @@ cat.anchor.y = 0.5;
 // cat.pivot.set(32, 32); // image size: 64x64일 경우 둘 다 이미지 중앙 기준
 ```
 > https://github.com/kittykatattack/learningPixi#rotation
+
+
+## 8. Sprite From Tileset
+캐싱된 이미지에서 스프라이트 영역을 PIXI.Rectangle 객체 생성해서 지정하기
+```
+  let texture = TextureCache["images/tileset.png"];
+  let rectangle = new Rectangle(192, 128, 64, 64);
+  texture.frame = rectangle;
+  let rocket = new Sprite(texture);
+
+  //Optionally use `pivot` to move the sprite's x and y position
+  /*
+  rocket.pivot.set(32, 32);
+  rocket.rotation = 0.3;
+  console.log(rocket.position)
+  */
+
+  app.stage.addChild(rocket);
+```
 
