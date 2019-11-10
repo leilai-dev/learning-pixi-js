@@ -323,3 +323,77 @@ function play(delta) {
 ```
 
 
+## 13. KeyboardMovement
+이벤트 핸들러가 미리 정의된게 아예 없나? 터치/클릭 이벤트 고려해보기
+```
+//The `keyboard` helper function
+function keyboard(keyCode) {
+  var key = {};
+  key.code = keyCode;
+  key.isDown = false;
+  key.isUp = true;
+  key.press = undefined;
+  key.release = undefined;
+  //The `downHandler`
+  key.downHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isUp && key.press) key.press();
+      key.isDown = true;
+      key.isUp = false;
+    }
+    event.preventDefault();
+  };
+  //The `upHandler`
+  key.upHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isDown && key.release) key.release();
+      key.isDown = false;
+      key.isUp = true;
+    }
+    event.preventDefault();
+  };
+  //Attach event listeners
+  window.addEventListener(
+    "keydown", key.downHandler.bind(key), false
+  );
+  window.addEventListener(
+    "keyup", key.upHandler.bind(key), false
+  );
+  return key;
+}
+
+function setup() {
+  ... // 리소스 초기화 
+  //Capture the keyboard arrow keys
+  let left = keyboard(37),
+    up = keyboard(38),
+    right = keyboard(39),
+    down = keyboard(40);
+
+  // 각 키 이벤트 down/up의 상세 내용 정의
+  left.press = () => {
+    cat.vx = -5;
+    cat.vy = 0;
+  };
+  left.release = () => {
+    if (!right.isDown && cat.vy === 0) {
+      cat.vx = 0;
+    }
+  };
+  ...
+  state = play;
+  app.ticker.add(delta => gameLoop(delta));
+}
+
+function gameLoop(delta) {
+  //Update the current game state:
+  state(delta);
+}
+
+function play(delta) {
+  //Use the cat's velocity to make it move
+  cat.x += cat.vx;
+  cat.y += cat.vy
+}
+```
+
