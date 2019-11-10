@@ -278,3 +278,18 @@ function gameLoop() {
 gameLoop();
 ```
 
+
+## 11. VelocityVariables
+등속도 운동?
+```
+function gameLoop(delta){
+  //Update the cat's velocity
+  cat.vx = 1;
+  cat.vy = 1;
+
+  //Apply the velocity values to the cat's 
+  //position to make it move
+  cat.x += cat.vx;
+  cat.y += cat.vy;
+}
+```
