@@ -293,3 +293,33 @@ function gameLoop(delta){
   cat.y += cat.vy;
 }
 ```
+
+
+## 12. GameStates
+이전 11 내용을 state 변수 추가해서 gameState/gameLoop 관리하기
+```
+let cat, state;
+...
+function setup() {
+  // ...
+  //Set the game state
+  state = play;
+ 
+  //Start the game loop 
+  app.ticker.add(delta => gameLoop(delta));
+}
+
+function gameLoop(delta){
+  //Update the current game state:
+  state(delta);
+}
+
+// play state에서 수행할 내용을 분리
+function play(delta) { 
+  //Move the cat 1 pixel to the right each frame
+  cat.vx = 1
+  cat.x += cat.vx;
+}
+```
+
+
