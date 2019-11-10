@@ -213,3 +213,47 @@ cat.anchor.y = 0.5;
   app.stage.addChild(rocket);
 ```
 
+
+## 9. SpriteFromTextureAtlas
+별도의 텍스쳐 패커는 없음
+> [TexturePacker - Create Sprite Sheets for your game!] (https://www.codeandweb.com/texturepacker)
+
+위와 같은 프로그램을 사용하여 json데이터로 뽑아낸 아틀라스 이미지를 활용
+```
+// JSON 양식
+"blob.png":
+{
+	"frame": {"x":55,"y":2,"w":32,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":24},
+	"sourceSize": {"w":32,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+```
+json 파일을 로드시 add, 키값으로 받아오는 듯?
+
+### setup() 내부에서 이미지 로드시, 3가지 방법
+1. TextureCache
+```
+let texture = TextureCache["frameId.png"], // TextureCache[KEY];
+sprite = new Sprite(texture);
+app.stage.addChild(sprite);
+```
+2. PIXI.loader.resources
+loader에서 add한 아틀라스 json정보에 대해 아래와 같이 활용 가능
+```
+let sprite = new Sprite(
+  resources["images/treasureHunter.json"].textures["frameId.png"]
+);
+app.stage.addChild(sprite);
+```
+3. 아틀라스 id로 alias call
+```
+let id = PIXI.loader.resources["images/treasureHunter.json"].textures; 
+let sprite = new Sprite(id["frameId.png"]);
+app.stage.addChild(sprite);
+```
+
+그리드 형식으로 표현될 경우 기준 타일 사이즈를 상수로 선언해 놓는것도 괜찮을 듯
+
