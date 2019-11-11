@@ -430,3 +430,38 @@ Pixi에서 제공되는 PIXI.Graphics API, HTML의 Canvas Drawing API와 유사
 
 다만 WebGL을 지원할 경우 WebGL로 다시 랜더링 된다고 함. 사용할 경우 레퍼런스 참조하면 될 듯
 
+
+## 16. DisplayingText
+PIXI.Text -> 이것도 Canvas API활용
+> http://pixijs.download/release/docs/PIXI.Text.html
+
+### CSS 활용한 폰트 타입 추가
+html파일에서 추가
+- cdn활용
+```
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+```
+```
+body {
+  background: #eceff1;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "NanumSquareRound", sans-serif;
+```
+
+- css에서 선언
+```
+@font-face {
+  font-family: "fontFamilyName";
+  src: url("fonts/fontFile.ttf");
+}
+```
+
+CDN은 되는데 나머진 잘 모르겠음
+
+### BitmapFont 지원
+v5에서는 PIXI.BitmapText로 변경
+> http://pixijs.download/release/docs/PIXI.extras.BitmapText.html -> v4
+
+> http://pixijs.download/release/docs/PIXI.BitmapText.html -> v5
+
+

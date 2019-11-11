@@ -8,8 +8,6 @@ let Application = PIXI.Application,
   Rectangle = PIXI.Rectangle;
 //Create a Pixi Application
 let app = new Application({
-  width: 256,
-  height: 256,
   antialiasing: true,
   transparent: false,
   resolution: 1
