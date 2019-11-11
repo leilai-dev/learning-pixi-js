@@ -469,3 +469,39 @@ v5에서는 PIXI.BitmapText로 변경
 기본적인 사각형 콜리젼 박스...를 구현했네?
 > https://github.com/kittykatattack/learningPixi#collision-detection
 
+
+## 18. TreasureHunter
+위 내용들을 총합한 케이스 스터디
+```
+//Setup Pixi and load the texture atlas files - call the `setup`
+//function when they've loaded
+
+function setup() {
+  //Initialize the game sprites, set the game `state` to `play`
+  //and start the 'gameLoop'
+}
+
+function gameLoop(delta) {
+  //Runs the current game `state` in a loop and renders the sprites
+}
+
+function play(delta) {
+  //All the game logic goes here
+}
+
+function end() {
+  //All the code that should run at the end of the game
+}
+
+//The game's helper functions:
+//`keyboard`, `hitTestRectangle`, `contain` and `randomInt`
+```
+### 새로운 내용: scene 개념
+기존 gameLoop에서 단일 state로 관리하던 것을 gameScene, gameOverScene 씬 단위로 분리
+
+### contain 함수
+
+### gameOverScene에서 초기화 버튼 추가하기
+- playAgainButton 추가
+- replay() 내부에서 초기화 조건 추가
+
