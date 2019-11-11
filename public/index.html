@@ -94,6 +94,14 @@
       >
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p> -->
+    <script>
+      for (let i = 1; i < 19; i++) {
+        let aTag = document.createElement("a");
+        aTag.href = `tutorial/${i}`;
+        aTag.innerHTML = i;
+        document.body.appendChild(aTag);
+      }
+    </script>
     <a href="./1.html">1</a>
     <div id="root"></div>
     <script type="text/javascript">
@@ -110,7 +118,7 @@
         height: 256,
         antialias: true,
         transparent: false,
-        resolution: 1
+        resolution: 1,
       });
 
       //Add the canvas that Pixi automatically created for you to the HTML document
@@ -123,7 +131,7 @@
       function setup() {
         //Create the cat sprite
         let cat = new PIXI.Sprite(
-          PIXI.loader.resources["images/cat.png"].texture
+          PIXI.loader.resources["images/cat.png"].texture,
         );
 
         //Add the cat to the stage
@@ -145,10 +153,10 @@
         try {
           let app = firebase.app();
           let features = ["auth", "database", "messaging", "storage"].filter(
-            feature => typeof app[feature] === "function"
+            feature => typeof app[feature] === "function",
           );
           document.getElementById(
-            "load"
+            "load",
           ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
         } catch (e) {
           console.error(e);

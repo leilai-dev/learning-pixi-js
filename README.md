@@ -397,3 +397,28 @@ function play(delta) {
 }
 ```
 
+
+## 14. GroupingSprites
+일반적인 global position, local position 개념으로 활용 가능. 코드 참조하기
+
+### Using a ParticleContainer to group sprites
+> https://github.com/kittykatattack/learningPixi#using-a-particlecontainer-to-group-sprites
+
+PIXI.particles.ParticleContainer -> v5에서는 PXI.ParticleContainer 로 변경
+> http://pixijs.download/release/docs/PIXI.ParticleContainer.html
+
+```
+// let superFastSprites = new ParticleContainer(maxSize, properties, batchSize, autoResize);
+let superFastSprites = new ParticleContainer(
+  size, 
+  {
+    rotation: true,
+    alphaAndtint: true,
+    scale: true,
+    uvs: true
+  }
+);
+```
+튜토리얼에서도 batchSize와 autoResize는 잘 모른다고...
+
+
