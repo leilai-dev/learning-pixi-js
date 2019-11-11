@@ -422,3 +422,11 @@ let superFastSprites = new ParticleContainer(
 튜토리얼에서도 batchSize와 autoResize는 잘 모른다고...
 
 
+## 15. GraphicPrimitives
+Pixi에서 제공되는 PIXI.Graphics API, HTML의 Canvas Drawing API와 유사
+> https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
+
+> http://pixijs.download/release/docs/PIXI.Graphics.html
+
+다만 WebGL을 지원할 경우 WebGL로 다시 랜더링 된다고 함. 사용할 경우 레퍼런스 참조하면 될 듯
+
