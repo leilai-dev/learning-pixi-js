@@ -465,3 +465,7 @@ v5에서는 PIXI.BitmapText로 변경
 > http://pixijs.download/release/docs/PIXI.BitmapText.html -> v5
 
 
+## 17. Collision detection
+기본적인 사각형 콜리젼 박스...를 구현했네?
+> https://github.com/kittykatattack/learningPixi#collision-detection
+
