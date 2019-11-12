@@ -15,129 +15,109 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <style media="screen">
+    <script src="pixi/4.8.7/pixi.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap-table/4.3.1/react-bootstrap-table-all.min.css"
+    />
+    <style>
       body {
-        background: #eceff1;
-        color: rgba(0, 0, 0, 0.87);
-        font-family: Roboto, Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
-      #message {
-        background: white;
-        max-width: 360px;
-        margin: 100px auto 16px;
-        padding: 32px 24px;
-        border-radius: 3px;
+      table {
+        margin: auto;
+        margin-top: 48px;
+        width: 80%;
       }
-      #message h2 {
-        color: #ffa100;
-        font-weight: bold;
-        font-size: 16px;
-        margin: 0 0 8px;
-      }
-      #message h1 {
-        font-size: 22px;
-        font-weight: 300;
-        color: rgba(0, 0, 0, 0.6);
-        margin: 0 0 16px;
-      }
-      #message p {
-        line-height: 140%;
-        margin: 16px 0 24px;
-        font-size: 14px;
-      }
-      #message a {
-        display: block;
-        text-align: center;
-        background: #039be5;
-        text-transform: uppercase;
+      a {
+        display: inline-block;
+        width: 100%;
         text-decoration: none;
-        color: white;
-        padding: 16px;
-        border-radius: 4px;
-      }
-      #message,
-      #message a {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      }
-      #load {
-        color: rgba(0, 0, 0, 0.4);
-        text-align: center;
-        font-size: 13px;
-      }
-      @media (max-width: 600px) {
-        body,
-        #message {
-          margin-top: 0;
-          background: white;
-          box-shadow: none;
-        }
-        body {
-          border-top: 16px solid #ffa100;
-        }
+        color: black;
+        padding: 4px 0px;
+        text-indent: 12px;
       }
     </style>
-
-    <script src="pixi/4.8.7/pixi.min.js"></script>
   </head>
   <body>
-    <!-- <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>
-        You're seeing this because you've successfully setup Firebase Hosting.
-        Now it's time to go build something extraordinary!
-      </p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/"
-        >Open Hosting Documentation</a
-      >
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p> -->
-    <script>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const data = [
+        { id: 1, title: "Setting up" },
+        { id: 2, title: "Creating the Pixi Application and stage" },
+        { id: 3, title: "Pixi sprites" },
+        { id: 4, title: "Sprite From Image" },
+        { id: 5, title: "Aliases" },
+        { id: 6, title: "Loading Progress" },
+        { id: 7, title: "Position And Rotation" },
+        { id: 8, title: "Sprite From Tileset" },
+        { id: 9, title: "SpriteFromTextureAtlas" },
+        { id: 10, title: "MovingSprites" },
+        { id: 11, title: "VelocityVariables" },
+        { id: 12, title: "GameStates" },
+        { id: 13, title: "KeyboardMovement" },
+        { id: 14, title: "GroupingSprites" },
+        { id: 15, title: "GraphicPrimitives" },
+        { id: 16, title: "DisplayingText" },
+        { id: 17, title: "Collision detection" },
+        { id: 18, title: "TreasureHunter" },
+        { id: 19, title: "MineSweeper" }
+      ];
+      const App = () => (
+        <div>
+          <table border={1} className="table .table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map(elem => {
+                return (
+                  <tr>
+                    <td>{elem.id}</td>
+                    <td>
+                      <a
+                        href={`tutorial/${
+                          elem.id < 10 ? "0" + elem.id : elem.id
+                        }`}
+                      >
+                        {elem.title}
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
+      ReactDOM.render(<App />, document.querySelector("#root"));
+    </script>
+
+    <!-- <script>
       for (let i = 1; i < 19; i++) {
         let aTag = document.createElement("a");
         aTag.href = `tutorial/${i}`;
         aTag.innerHTML = i;
         document.body.appendChild(aTag);
       }
-    </script>
-    <a href="./1.html">1</a>
-    <div id="root"></div>
-    <script type="text/javascript">
-      let type = "WebGL";
-      if (!PIXI.utils.isWebGLSupported()) {
-        type = "canvas";
-      }
+    </script> -->
 
-      PIXI.utils.sayHello(type);
+    <!-- <a href="./1.html">1</a> -->
 
-      //Create a Pixi Application
-      let app = new PIXI.Application({
-        width: 256,
-        height: 256,
-        antialias: true,
-        transparent: false,
-        resolution: 1,
-      });
-
-      //Add the canvas that Pixi automatically created for you to the HTML document
-      document.body.querySelector("#root").appendChild(app.view);
-
-      //load an image and run the `setup` function when it's done
-      PIXI.loader.add("images/cat.png").load(setup);
-
-      //This `setup` function will run when the image has loaded
-      function setup() {
-        //Create the cat sprite
-        let cat = new PIXI.Sprite(
-          PIXI.loader.resources["images/cat.png"].texture,
-        );
-
-        //Add the cat to the stage
-        app.stage.addChild(cat);
-      }
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -153,10 +133,10 @@
         try {
           let app = firebase.app();
           let features = ["auth", "database", "messaging", "storage"].filter(
-            feature => typeof app[feature] === "function",
+            feature => typeof app[feature] === "function"
           );
           document.getElementById(
-            "load",
+            "load"
           ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
         } catch (e) {
           console.error(e);

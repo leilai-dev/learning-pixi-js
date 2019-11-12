@@ -505,3 +505,5 @@ function end() {
 - playAgainButton 추가
 - replay() 내부에서 초기화 조건 추가
 
+
+# Appendix
