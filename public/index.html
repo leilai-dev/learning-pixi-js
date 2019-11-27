@@ -13,8 +13,8 @@
     <script defer src="/__/firebase/7.3.0/firebase-messaging.js"></script>
     <script defer src="/__/firebase/7.3.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
     <script defer src="/__/firebase/7.3.0/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
 
     <script src="pixi/4.8.7/pixi.min.js"></script>
     <link
@@ -125,7 +125,7 @@
 
     <!-- <a href="./1.html">1</a> -->
 
-    <script>
+    <script defer>
       document.addEventListener("DOMContentLoaded", function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
@@ -138,9 +138,14 @@
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         try {
           let app = firebase.app();
+          console.log(app);
           let features = ["auth", "database", "messaging", "storage"].filter(
             feature => typeof app[feature] === "function"
           );
+          const firebaseAnalytics = firebase.analytics();
+          console.log(firebaseAnalytics);
+          firebaseAnalytics.logEvent("page_view");
+
           // document.getElementById(
           //   "load"
           // ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
@@ -150,12 +155,6 @@
             "Error loading the Firebase SDK, check the console.";
         }
       });
-    </script>
-    <script>
-      const firebaseAnalytics = firebase.analytics();
-      console.log(firebaseAnalytics);
-
-      firebaseAnalytics.logEvent("page_view");
     </script>
   </body>
 </html>
