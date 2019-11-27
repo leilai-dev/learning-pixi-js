@@ -4,9 +4,10 @@ if (!PIXI.utils.isWebGLSupported()) {
 }
 
 //Create a Pixi Application
+const firebaseAnalytics = firebase.analytics();
 firebaseAnalytics.logEvent('screen_view', document.title);
 
-let app = newPIXI.Application({
+let app = new PIXI.Application({
   width: 256, // default: 800
   height: 256, // default: 600
   antialias: true, // default: false

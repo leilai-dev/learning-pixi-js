@@ -1,3 +1,4 @@
+const firebaseAnalytics = firebase.analytics();
 firebaseAnalytics.logEvent('screen_view', document.title);
 
 let type = "WebGL";

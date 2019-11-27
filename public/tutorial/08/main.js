@@ -7,9 +7,10 @@ let Application = PIXI.Application,
   Sprite = PIXI.Sprite,
   Rectangle = PIXI.Rectangle;
 //Create a Pixi Application
+const firebaseAnalytics = firebase.analytics();
 firebaseAnalytics.logEvent('screen_view', document.title);
 
-let app = newApplication({
+let app = new Application({
   antialiasing: true,
   transparent: false,
   resolution: 1

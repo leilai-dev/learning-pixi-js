@@ -7,9 +7,10 @@ let Application = PIXI.Application,
   Sprite = PIXI.Sprite;
 
 //Create a Pixi Application
+const firebaseAnalytics = firebase.analytics();
 firebaseAnalytics.logEvent('screen_view', document.title);
 
-let app = newApplication();
+let app = new Application();
 
 console.log(app.renderer.width)
 //Add the canvas that Pixi automatically created for you to the HTML document
