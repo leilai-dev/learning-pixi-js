@@ -6,14 +6,15 @@
     <title>Welcome to Firebase Hosting</title>
 
     <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.2.3/firebase-app.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.2.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.2.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.2.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.2.3/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <script defer src="/__/firebase/7.3.0/firebase-analytics.js"></script>
 
     <script src="pixi/4.8.7/pixi.min.js"></script>
     <link
@@ -72,10 +73,16 @@
         { id: 16, title: "DisplayingText" },
         { id: 17, title: "Collision detection" },
         { id: 18, title: "TreasureHunter" },
-        { id: 19, title: "MineSweeper" }
+        { id: 19, title: "MineSweeper" },
+        { id: 20, title: "Phaser to Pixi 2048 (진행중)" }
       ];
       const App = () => (
         <div>
+          <h2 style={{ textAlign: "center" }}>
+            <a href="https://github.com/leilai-dev/learning-pixi-js">
+              https://github.com/leilai-dev/learning-pixi-js
+            </a>
+          </h2>
           <table border={1} className="table .table-striped">
             <thead>
               <tr>
@@ -86,7 +93,7 @@
             <tbody>
               {data.map(elem => {
                 return (
-                  <tr>
+                  <tr key={elem.id}>
                     <td>{elem.id}</td>
                     <td>
                       <a
@@ -129,21 +136,26 @@
         // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
         try {
           let app = firebase.app();
           let features = ["auth", "database", "messaging", "storage"].filter(
             feature => typeof app[feature] === "function"
           );
-          document.getElementById(
-            "load"
-          ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
+          // document.getElementById(
+          //   "load"
+          // ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
         } catch (e) {
           console.error(e);
           document.getElementById("load").innerHTML =
             "Error loading the Firebase SDK, check the console.";
         }
       });
+    </script>
+    <script>
+      const firebaseAnalytics = firebase.analytics();
+      console.log(firebaseAnalytics);
+
+      firebaseAnalytics.logEvent("page_view");
     </script>
   </body>
 </html>

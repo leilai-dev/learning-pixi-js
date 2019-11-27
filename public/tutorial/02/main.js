@@ -4,7 +4,9 @@ if (!PIXI.utils.isWebGLSupported()) {
 }
 
 //Create a Pixi Application
-let app = new PIXI.Application({
+firebaseAnalytics.logEvent('screen_view', document.title);
+
+let app = newPIXI.Application({
   width: 256, // default: 800
   height: 256, // default: 600
   antialias: true, // default: false

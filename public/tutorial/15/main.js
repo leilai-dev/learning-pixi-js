@@ -7,7 +7,9 @@ let Application = PIXI.Application,
   TextureCache = PIXI.utils.TextureCache,
   Sprite = PIXI.Sprite;
 //Create a Pixi Application
-let app = new Application({
+firebaseAnalytics.logEvent('screen_view', document.title);
+
+let app = newApplication({
   antialiasing: true,
   transparent: false,
   resolution: 1

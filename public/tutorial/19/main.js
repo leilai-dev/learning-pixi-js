@@ -1,3 +1,5 @@
+firebaseAnalytics.logEvent('screen_view', document.title);
+
 // Settings that the classes need to make use of before the game is initialized
 let settings = {
   gridSize: 9,

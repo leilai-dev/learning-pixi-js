@@ -11,7 +11,9 @@ if (!PIXI.utils.isWebGLSupported()) {
   type = "canvas";
 }
 
-let app = new PIXI.Application();
+firebaseAnalytics.logEvent('screen_view', document.title);
+
+let app = newPIXI.Application();
 
 document.body.appendChild(app.view);
 

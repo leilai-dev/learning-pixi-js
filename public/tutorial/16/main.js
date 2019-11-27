@@ -3,7 +3,9 @@ let Application = PIXI.Application,
   Text = PIXI.Text,
   TextStyle = PIXI.TextStyle;
 //Create a Pixi Application
-let app = new Application({
+firebaseAnalytics.logEvent('screen_view', document.title);
+
+let app = newApplication({
   antialiasing: true,
   transparent: false,
   resolution: 1,
